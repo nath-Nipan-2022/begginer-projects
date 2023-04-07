@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- font awesome  -->
+		<script src="https://kit.fontawesome.com/9f47c55281.js" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="style.css" />
+		<title>Weather Application</title>
+	</head>
+	<body>
+		<header class="container">
+			<nav class="navbar">
+				<a href="#"><h1 class="logo">Weather</h1></a>
+				<form class="search_bar">
+					<i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+					<input type="search" name="city" id="citySearch" placeholder="Agartala" />
+					<button type="submit"></button>
+				</form>
+
+				<ul class="navLinks">
+					<li><a href="#delhi">Delhi</a></li>
+					<li><a href="#mumbai">Mumbai</a></li>
+					<li><a href="#allahabad">Allahabad</a></li>
+					<li><a href="#bangalore">Bangalore</a></li>
+				</ul>
+				<!-- menu icon -->
+				<div class="menu"><i class="fa-solid fa-bars"></i></div>
+			</nav>
+
+			<section class="weather-section">
+				<div class="weather-report"></div>
+			</section>
+		</header>
+
+		<!-- app.js -->
+		<script src="app.js"></script>
+		<!-- menu toggle -->
+		<script>
+			document.querySelector(".menu").addEventListener("click", () => {
+				document.querySelector(".navLinks").classList.toggle("active");
+			});
+		</script>
+	</body>
+</html>

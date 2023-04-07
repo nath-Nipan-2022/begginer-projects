@@ -1,0 +1,84 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+
+:root {
+    --bg-clr: hsl(251, 96%, 81%);
+    --select-clr: hsl(249, 90%, 92%);
+    --dark:#282828;
+    --light:#f4f4f4;
+}
+
+.pad-xy-1 {
+    padding: 1rem;
+}
+
+.bdr-2 {
+    border: 2px solid var(--light);
+}
+
+.container {
+    width: 400px;
+    height: 300px;
+    border-radius: 1rem;
+    background: var(--light);
+    text-align: center;
+    transition: .5s;
+}
+
+.dark-theme{
+    --light:#282828;
+    --dark:#f4f4f4;
+}
+
+body {
+    display: grid;
+    place-items: center;
+    height: 80vh;
+    background-color: #117a5d;
+}
+
+.heading {
+    margin: 0;
+    padding: 1rem 0;
+    border-radius: .5rem;
+    font-family: 'Roboto', sans-serif;
+    color: var(--dark);
+}
+
+.select {
+    padding: .4rem 1.5rem;
+    font: 600 "Roboto", sans-serif 0.85rem;
+    background-color: var(--select-clr);
+    border-radius: 0.4rem;
+    border: none;
+    cursor: pointer;
+    transition: 300ms;
+}
+
+.select:is(:hover, :focus) {
+    background-color: #e6c1ff;
+}
+
+.theme-toggler-icon {
+    width: 3.2rem;
+    height: 20px;
+    margin: 2rem auto;
+    border-radius: 1rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    border-color: var(--bg-clr);
+}
+
+.circle {
+    width: 16px;
+    height: 16px;
+    margin-left: 2px;
+    border-radius: 50%;
+    background: #6d6d6d;
+    transition: 300ms;
+}
+
+.circle.active{
+    background: var(--bg-clr);
+    transform: translate(1.85rem);
+}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="style.css" />
+    <script
+      defer
+      src="https://kit.fontawesome.com/9f47c55281.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Stopwatch</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Play This Stopwatch</h1>
+      <article>
+        <button class="start-btn">
+          <i class="fa-solid fa-circle-play"></i>
+        </button>
+        <button class="reset-btn">
+          <i class="fa-solid fa-arrow-rotate-left"></i>
+        </button>
+        <button class="lap">Lap</button>
+      </article>
+      <div id="display">
+        <span>00</span>:<span class="secs">00</span>:<span class="milisecs"
+          >00</span
+        >
+      </div>
+
+      <ol type="a"></ol>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>

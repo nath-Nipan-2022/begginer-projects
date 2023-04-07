@@ -1,0 +1,87 @@
+* {
+   box-sizing: border-box;
+   padding: 0;
+}
+
+.container {
+   margin: 0.5rem auto;
+   width: 90%;
+}
+
+.slides {
+   overflow: hidden;
+   position: relative;
+}
+
+.heading {
+   text-align: center;
+   padding: 0.5rem;
+   /* typography */
+   font-size: clamp(1rem, 10vw, 2rem);
+   letter-spacing: 1px;
+   background-color: hsl(220, 80%, 75%);
+   transition: all .3s ease-in-out;
+}
+.heading:hover{
+   background-color: hsl(220, 80%, 65%);
+}
+.slides img {
+   width: 100%;
+   transition: transform 700ms;
+}
+
+.slides img:hover {
+   transform: scale(1.1);
+}
+
+.arrowBtn {
+   /* position the btns */
+   position: absolute;
+   top: 50%;
+   transform: translate(0%, -50%);
+   /* styling of the btns */
+   padding: 4px 8px;
+   font-size: 2rem;
+   color: #eee;
+   transition: 0.3s;
+}
+
+.prevBtn {
+   left: 3%;
+   border-radius: 0 4px 4px 0;
+}
+
+.nextBtn {
+   right: 3%;
+   border-radius: 4px 0 0 4px;
+}
+
+.arrowBtn:hover {
+   cursor: pointer;
+   background-color: rgba(0, 0, 0, 0.5);
+}
+
+.dots {
+   /* positioning of all dots */
+   position: absolute;
+   left: 50%;
+   bottom: 10%;
+   transform: translate(-50%);
+   user-select: none;
+}
+
+.dot {
+   /* styling of dots */
+   display: inline-block;
+   width: 7px;
+   height: 7px;
+   border-radius: 50%;
+   background-color: rgba(255, 255, 255, 0.315);
+   cursor: pointer;
+   transition: background-color 0.5s ease-in-out;
+}
+
+.dot:hover,
+.dot.active {
+   background-color: #fff;
+}

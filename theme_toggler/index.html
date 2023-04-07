@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<link rel="stylesheet" href="style.css" />
+		<title>Theme Changer</title>
+	</head>
+	<body>
+		<div class="container pad-xy-1">
+			<h1 class="heading">Change the theme</h1>
+			<!-- toggle the theme -->
+			<div class="bdr-2 theme-toggler-icon">
+				<span class="circle"></span>
+			</div>
+			<!-- select the theme -->
+			<select id="theme" class="select">
+				<option value="light">Light</option>
+				<option value="dark">Dark</option>
+			</select>
+		</div>
+
+		<!-- javascript -->
+		<script>
+			const container = document.querySelector(".container");
+			// note: use "change" event
+			document.querySelector(".select").addEventListener("change", function (e) {
+				if (this.value === "dark") {
+					toggleTheme();
+				} else if (this.value === "light") {
+					toggleTheme();
+				}
+			});
+
+			// Toggle's functionality ->
+			const toggler = document.querySelector(".theme-toggler-icon");
+			toggler.addEventListener("click", toggleTheme);
+
+			function toggleTheme() {
+				toggler.children[0].classList.toggle("active");
+				container.classList.toggle("dark-theme");
+			}
+		</script>
+	</body>
+</html>

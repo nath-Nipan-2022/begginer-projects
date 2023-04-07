@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>OTP GENERATE</title>
+	</head>
+	<style>
+		body {
+			color: #f3f3f3;
+			background-color: #333;
+			display: flex;
+			font-size: 2rem;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+		}
+		#OtpField {
+			padding: 0.3rem 1rem;
+			background-color: #319145;
+			border: 2px solid #ddd;
+			border-radius: 6px;
+			font-size: 20px;
+		}
+		.btn {
+			padding: 0.5rem 1rem;
+			border-radius: 5px;
+			border: none;
+			letter-spacing: 1px;
+			color: #ffffff;
+			background-color: #5167a5;
+			transform: scale(2);
+			position: relative;
+			transition: transform 0.5s;
+		}
+		.btn:hover {
+			--shw: #425586;
+			transform: scale(2.5) translateY(10px);
+			background-color: var(--shw);
+		}
+	</style>
+	<body>
+		<h2>Otp Generator</h2>
+		<button class="btn" onclick="generate()">GENERATE</button>
+		<h3></h3>
+		<div id="OtpField"></div>
+		<script>
+			// Using a function is very important as it will run when we call it;;;💨💨⭐
+			function generate() {
+				let k = "";
+				// string will store value horizontally ;;
+				for (let i = 0; i < 6; i++) {
+					let random = Math.floor(Math.random() * 9);
+					k += random;
+				}
+				document.getElementById("OtpField").innerText = k;
+			}
+			//// Description::
+			// when we call generate(), then the for loop runs, in every for loop the value of k is stored as 6 digit random numbers. Then the value of k is stored in the Textarea;;
+			//⭐⭐ Crucial Part
+		</script>
+		<footer>
+			<h4>Copy Write &copy OtpGenerator</h4>
+		</footer>
+	</body>
+</html>

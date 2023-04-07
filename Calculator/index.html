@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Web Calculator</title>
+		<!-- online Animation -->
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+		/>
+		<!-- custom css -->
+		<link
+			href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@1,500&display=swap"
+			rel="stylesheet"
+		/>
+		<style>
+			* {
+				font-family: "Lora", serif;
+				--gradient: linear-gradient(135deg, #b42525, #245eb5);
+			}
+			body {
+				display: grid;
+				place-items: center;
+				height: 100vh;
+				background: var(--gradient);
+			}
+			.heading{
+				margin: 0;
+				color: #ddd;
+				letter-spacing: 1px;
+			}
+			.calculator {
+				min-width: 220px;
+				padding: 1.5rem 1rem;
+				user-select: none;
+				transition: .4s;
+			}
+			.display {
+				font-size: 1.3rem;
+				height: 2rem;
+				padding: 10px;
+				text-align: right;
+				/* vertical-align: middle; */
+				color: #f2f3f4;
+				background-color: rgba(0, 0, 0, 0.6);
+				box-shadow: inset 0 -1px 1px #faf8f8;
+				margin-bottom: 0.45rem;
+				transition: 0.4s ease-out;
+			}
+			.display:hover {
+				border-radius: 4px;
+				box-shadow: inset 0 -1px 1px #faf8f8, 0 2px 1rem 0 #000000a6;
+			}
+			.actions {
+				display: grid;
+				grid-template-columns: repeat(4, 1fr);
+				grid-template-rows: repeat(5, 1fr);
+				gap: 4px;
+			}
+			.calculator button {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				padding: 0.85rem;
+				font-size: 1rem;
+				border: none;
+				border-radius: 2px;
+				background: rgba(0, 0, 0, 0.5);
+				color: #faf8f8;
+				transition: 0.3s;
+			}
+			button:hover {
+				box-shadow: inset 0 -1px 0px #faf8f8;
+				background: #4e4e4e;
+			}
+			.colspan-2 {
+				grid-column-end: span 2;
+			}
+			.colspan-2:hover {
+				background: hsl(20, 42%, 41%);
+			}
+		</style>
+	</head>
+	<body>
+		<h1 class="heading">Web Calculator</h1>
+		<div class="calculator animate__animated animate__zoomInUp">
+			<div class="display"></div>
+
+			<div class="actions">
+				<button data-clear class="colspan-2">AC</button>
+				<button data-delete>&DoubleLongLeftArrow;</button>
+				<button data-operation>&divide;</button>
+				<button data-number>7</button>
+				<button data-number>8</button>
+				<button data-number>9</button>
+				<button data-operation>&times;</button>
+				<button data-number>4</button>
+				<button data-number>5</button>
+				<button data-number>6</button>
+				<button data-operation>&minus;</button>
+				<button data-number>1</button>
+				<button data-number>2</button>
+				<button data-number>3</button>
+				<button data-operation>+</button>
+				<button data-number>0</button>
+				<button data-number>.</button>
+				<button data-equals class="colspan-2">=</button>
+			</div>
+		</div>
+		<script src="app.js"></script>
+	</body>
+</html>

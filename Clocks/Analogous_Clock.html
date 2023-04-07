@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Analogous Clock</title>
+		<style>
+			body {
+				background-color: #212121;
+				height: 80vh;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+			.clock {
+				border: 15px solid #993182;
+				padding: 10px;
+				box-shadow: 0 0 1px hotpink, 0 0 15px hotpink, 0 0 100px hotpink;
+				background: linear-gradient(135deg, #440c0c, #4e4244);
+				position: relative;
+				width: 20rem;
+				height: 20rem;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				border-radius: 100%;
+				/* Rotate it so that,
+            Time starts from 12:00 */
+				transform: rotate(-90deg);
+			}
+			.clock :is(.sec, .mint, .hour) {
+				position: absolute;
+				border-radius: 10px;
+			}
+			.clock .sec {
+				width: 85%;
+				height: 3px;
+				background: linear-gradient(to right, transparent 50%, hotpink 50%);
+				z-index: 3;
+			}
+			.clock .mint {
+				width: 75%;
+				height: 12px;
+				z-index: 1;
+				background: linear-gradient(
+					to right,
+					transparent 50%,
+					hsl(330, 100%, 56%) 50%
+				);
+			}
+			.clock .hour {
+				width: 60%;
+				height: 14px;
+				z-index: 2;
+				background: linear-gradient(
+					to right,
+					transparent 50%,
+					hsl(330, 100%, 41%) 50%
+				);
+			}
+			.clock .mid-dot {
+				position: absolute;
+				width: 20px;
+				height: 20px;
+				z-index: 3;
+				border-radius: 50%;
+				background: hsl(303, 100%, 59%);
+				box-shadow: 0 0 5px #666;
+			}
+			.clock span:not(.mid-dot) {
+				color: aliceblue;
+				rotate: 90deg;
+				text-align: right;
+				position: absolute;
+				margin: 5px;
+				font-size: 20px;
+				z-index: 11;
+			}
+			/* Custom styles for Digits */
+			.clock span:nth-of-type(6) {
+				left: 0;
+				padding: 5px;
+			}
+			.clock span:nth-of-type(9) {
+				top: 0;
+			}
+			.clock span:nth-of-type(12) {
+				right: 0;
+			}
+			.clock span:nth-of-type(3) {
+				bottom: 0;
+			}
+			/* part One */
+			.clock span:nth-of-type(1) {
+				right: 8%;
+				bottom: 21%;
+			}
+			.clock span:nth-of-type(11) {
+				right: 8%;
+				top: 21%;
+			}
+			.clock span:nth-of-type(5) {
+				left: 8%;
+				bottom: 21%;
+			}
+			.clock span:nth-of-type(7) {
+				left: 8%;
+				top: 21%;
+			}
+			/* part Two */
+			.clock span:nth-of-type(2) {
+				right: 25%;
+				bottom: 5%;
+			}
+			.clock span:nth-of-type(10) {
+				right: 25%;
+				top: 5%;
+			}
+			.clock span:nth-of-type(8) {
+				left: 25%;
+				top: 5%;
+			}
+			.clock span:nth-of-type(4) {
+				left: 25%;
+				bottom: 5%;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="clock">
+			<div class="sec"></div>
+			<div class="mint"></div>
+			<div class="hour"></div>
+
+			<span>1</span>
+			<span>2</span>
+			<span>3</span>
+			<span>4</span>
+			<span>5</span>
+			<span>6</span>
+			<span>7</span>
+			<span>8</span>
+			<span>9</span>
+			<span>10</span>
+			<span>11</span>
+			<span>12</span>
+
+			<span class="mid-dot"></span>
+		</div>
+
+		<script>
+			function rotateClock() {
+				let now = new Date();
+				let h = now.getHours();
+				let m = now.getMinutes();
+				let s = now.getSeconds();
+
+				h = h > 12 ? h - 12 : h;
+
+				let secDeg = s * 6;
+				let mintDeg = m * 6;
+				// hour stick will rotate 12 times so 12 * 30 degree = 360 degree;
+				// Think clearly
+				let hourDeg = h * 30 + m / 2;
+
+				rotateTimeStick(".sec", secDeg);
+				rotateTimeStick(".mint", mintDeg);
+				rotateTimeStick(".hour", hourDeg);
+
+				function rotateTimeStick(className, degrees) {
+					document.querySelector(
+						className
+					).style.transform = `rotate(${degrees}deg)`;
+				}
+			}
+			// let the function run after every 1s
+			setInterval(rotateClock, 1000);
+		</script>
+	</body>
+</html>

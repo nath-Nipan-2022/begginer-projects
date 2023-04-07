@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Filter items</title>
+		<style>
+			* {
+				background: #ddd;
+				border-radius: 5px;
+				font-family: "Lucida Sans", Verdana, sans-serif;
+				--bdr: #9fc05c;
+				--listBg: #eee;
+			}
+			body {
+				display: grid;
+				place-items: center;
+				height: 100vh;
+			}
+			.container {
+				width: min(90%, 95%);
+				height: 100vh;
+				padding: 1rem;
+			}
+			.heading {
+				text-align: center;
+				padding: 0.2rem 1rem;
+				color: #333;
+				/* border-bottom: 2px solid #b6f53a; */
+			}
+			#searchBox {
+				width: 100%;
+				padding: 5px 1rem;
+				font-size: 1rem;
+			}
+			.products {
+				padding: 0;
+				list-style: none;
+			}
+			.products li {
+				margin-block: 0.2rem;
+				padding: 0.4rem 1rem;
+				transition: background.2s;
+			}
+			.products li:nth-child(odd) {
+				background: var(--listBg);
+			}
+			.products li:hover {
+				background: #5a5a5a;
+				color: #f3f3f3;
+				cursor: pointer;
+				box-shadow: 5px 5px 4em #383737;
+			}
+			.hide {
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<h2 class="heading">Filter product items</h2>
+			<h4 class="foundItems"></h4>
+			<input
+				type="search"
+				name="search"
+				id="searchBox"
+				placeholder="Search Items"
+			/>
+
+			<ul class="products">
+				<li>Apple</li>
+				<li>Pineapple</li>
+				<li>Watermelon</li>
+				<li>Avocado</li>
+				<li>Guava</li>
+				<li>Pomegranates</li>
+				<li>Graphs</li>
+				<li>Almonds</li>
+				<li>Cashews</li>
+				<li>Orange</li>
+				<li>Banana</li>
+				<li>Kiwi</li>
+				<li>Papaya</li>
+				<li>Mango</li>
+				<li>Strawberries</li>
+				<li>Cucumber</li>
+				<li>Jackfruit</li>
+				<li>Walnuts</li>
+				<li></li>
+			</ul>
+		</div>
+		<script src="script.js"></script>
+	</body>
+</html>

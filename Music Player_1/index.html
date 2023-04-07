@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="style.css" />
+		<title>Music player</title>
+	</head>
+	<body>
+		<h1 class="heading">Play the Music you want</h1>
+		<div class="music-container">
+			<div class="music-thumbnail">
+				<img
+					id="thumbnailImage"
+					src="..."
+					alt="image"
+					width="100px"
+					height="100px"
+				/>
+			</div>
+			<div class="music-info">
+				<h4 class="title">title</h4>
+				<div class="progressContainer">
+					<div class="progress" id="progress"></div>
+				</div>
+			</div>
+			<div class="navigate">
+				<audio id="music" src="...">
+					<!-- WE CAN USE "controls" TO PLAY OR PAUSE OR DOWNLOAD THE AUDIO-->
+				</audio>
+				<button class="prevBtn"></button>
+				<button class="playBtn"></button>
+				<button class="nextBtn"></button>
+			</div>
+		</div>
+		<script src="app.js"></script>
+	</body>
+</html>

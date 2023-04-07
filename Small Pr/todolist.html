@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Todo List</title>
+	</head>
+	<body>
+		<h1>Dynamic Todo List Making</h1>
+		<script>
+			function createTodo() {
+				let h1 = document.querySelector("h1");
+				const todos = ["Collect Eggs"];
+				let userInput = prompt("Enter n or d or v or q");
+				while (userInput) {
+					// if userInput = n;
+					if (userInput === "n") {
+						let newTodo = prompt("Type in this field");
+						while (newTodo) {
+							alert(`'${newTodo}' added to the list!`);
+							todos.push(newTodo);
+							newTodo = prompt("Add another?");
+						}
+						// if userInput = d;
+					} else if (userInput === "d") {
+						let j = parseInt(prompt("Type the index of list to delete"));
+						// if j != NaN then,
+						if (!Number.isNaN(j)) {
+							h1.innerText = `'${todos[j]}' has been Removed!`;
+
+							todos.splice(j, 1);
+							console.log("New todo list");
+							console.log("*****");
+							todos.forEach((item) => console.log(item));
+							console.log("*****");
+						}
+					}
+					// if userInput == v;
+					else if (userInput === "v") {
+						console.log("Showing list :>> ");
+						console.log("**********");
+
+						todos.forEach((item) => console.log(item));
+
+						console.log("**********");
+					} else {
+						innerText = "You Quit!";
+						break;
+					}
+					userInput = prompt("Enter 'n' or 'v' or 'd' or 'q' ");
+				}
+			}
+
+			createTodo();
+		</script>
+	</body>
+</html>

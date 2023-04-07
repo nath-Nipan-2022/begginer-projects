@@ -1,0 +1,178 @@
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   font-family: 'Lucida Sans', Geneva, Verdana, sans-serif;
+   user-select: none;
+   --bdr: #f9f6fb;
+   --iconCLr: rgb(85, 84, 84);
+   --glassEffect: linear-gradient(90deg, rgb(255, 255, 255, 0.2), rgba(255, 255, 255, 0.4));
+}
+
+body {
+   display: grid;
+   place-items: center;
+   height: 70vh;
+   background-color: #4c4b4b;
+}
+
+.heading {
+   margin: auto;
+   padding: 1rem;
+   width: fit-content;
+   background: linear-gradient(90deg, rgb(255, 255, 255, 0.5), rgba(191, 191, 250, 0.822));
+   border-bottom: 4px solid var(--bdr);
+   border-radius: 4px 4px 0 0;
+}
+
+.music-container {
+   max-width: 75%;
+   margin: auto;
+   padding: .7rem;
+   overflow: hidden;
+   border-radius: 8px;
+   display: grid;
+   gap: .5rem;
+   grid-template:
+      'l t t' auto
+      'a b b' 1fr /
+      6rem 12rem 6rem;
+   position: relative;
+   /*! to make blur Effect */
+}
+
+.music-container::before {
+   content: '';
+   position: absolute;
+   background-color: rgb(255, 255, 255, .2);
+   backdrop-filter: blur(20px);
+   width: 110%;
+   height: 100%;
+   border-radius: 8px;
+}
+
+.music-info {
+   grid-area: t;
+   padding-top: 1rem;
+   text-align: center;
+   border-radius: 5px;
+   background: var(--glassEffect);
+   backdrop-filter: blur(5px);
+}
+
+.title {
+   color: #333;
+   padding: .4rem;
+}
+
+.music-thumbnail {
+   grid-area: l;
+   position: relative;
+}
+
+.music-thumbnail img {
+   width: 100%;
+   object-fit: contain;
+   background: var(--glassEffect);
+   border-radius: 50%;
+   animation: rotate 2s infinite linear forwards;
+   animation-play-state: paused;
+}
+
+.music-thumbnail img.rotate {
+   animation-play-state: running;
+}
+
+@keyframes rotate {
+   to {
+      transform: rotate(360deg);
+   }
+}
+
+.progressContainer {
+   background-color: rgb(85, 84, 84);
+   border-radius: 8px;
+   height: 4px;
+   margin-top: .6rem;
+   margin-inline: 1.4rem;
+   cursor: pointer;
+   text-align-last: left;
+}
+
+.progressContainer .progress {
+   width: 0%;
+   height: 100%;
+   background: linear-gradient(90deg, rgb(255, 255, 255), rgb(249, 250, 246));
+   box-shadow: 0 0 1rem #383737;
+   border-radius: 6px;
+}
+
+.navigate {
+   grid-area: b;
+   padding: 10px 0;
+   display: flex;
+   justify-content: space-between;
+}
+
+.navigate button {
+   width: 1.5rem;
+   height: 1.5rem;
+   padding: .2rem .5rem;
+   border: none;
+   border-radius: 5px;
+   background: #ddd;
+   ;
+   backdrop-filter: blur(10px);
+   font-weight: 600;
+   font-size: .9rem;
+   cursor: pointer;
+   position: relative;
+}
+
+.navigate button::after,
+.navigate button::before {
+   content: '';
+   position: absolute;
+   left: 50%;
+   top: 50%;
+   transform: translate(-50%, -50%);
+   /*todo: Making Triangle */
+   border-top: 6px solid transparent;
+   border-left: 8px solid var(--iconCLr);
+   border-bottom: 6px solid transparent;
+}
+
+.navigate button.nextBtn::after {
+   left: 70%;
+}
+
+.navigate button.prevBtn:after,
+.navigate button.prevBtn::before {
+   border-right: 8px solid var(--iconCLr);
+   border-left: none;
+}
+
+.navigate button.prevBtn::after {
+   left: 30%;
+}
+
+.navigate button.playBtn::before {
+   border: none;
+   padding: 6px 2px;
+   border-left: 4px solid var(--iconCLr);
+   border-right: 4px solid var(--iconCLr);
+   opacity: 0;
+}
+
+.navigate button.playBtn.play::before {
+   opacity: 1;
+}
+
+.navigate button.playBtn.play::after {
+   opacity: 0;
+}
+
+.navigate button:hover,
+.navigate button.play {
+   background-color: rgb(226, 238, 121);
+}
