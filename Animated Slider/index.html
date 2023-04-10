@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -102,3 +103,109 @@
     <script src="app.js"></script>
   </body>
 </html>
+=======
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Animated Slider</title>
+  </head>
+  <body>
+    <div class="slider-container">
+      <img
+        onclick="prevSlide()"
+        class="arrow left"
+        src="icons/left-thin-chevron.svg"
+        alt=""
+      />
+      <!-- slider -->
+      <div class="slider">
+        <div class="slide">
+          <img src="assets/tim-oun-jUBQ0VqIlAw-unsplash.jpg" alt="" />
+        </div>
+        <div class="slide">
+          <img src="/assets/mike-hindle-EPBJ-7OtBPY-unsplash.jpg" alt="" />
+        </div>
+        <div class="slide">
+          <img src="assets/Forward, Peijin Yang.jpg" alt="" />
+        </div>
+        <div class="slide">
+          <img src="/assets/Romance couple in sunset_.jpg" alt="" />
+        </div>
+      </div>
+
+      <img
+        onclick="nextSlide()"
+        class="arrow right"
+        src="/icons/right-thin-chevron.svg"
+        alt=""
+      />
+    </div>
+
+    <div class="card-wrapper">
+      <div class="cards-container">
+        <div class="cards-content">
+          <div class="card" onclick="scaleCards(0)">
+            <figure>
+              <img
+                src="/assets/Two Versions ;), Peijin Yang.jpg"
+                alt=""
+                loading="lazy"
+              />
+            </figure>
+            <div>
+              <h3>Profile</h3>
+              <p>Lorem ipsum dolor sit amet consectetur.</p>
+              <a href="#">Explore</a>
+            </div>
+          </div>
+          <div class="card" onclick="scaleCards(1)">
+            <figure>
+              <img
+                src="/assets/Romance couple in sunset_.jpg"
+                alt=""
+                loading="lazy"
+              />
+            </figure>
+            <div>
+              <h3>Profile</h3>
+              <p>Lorem ipsum dolor sit amet consectetur.</p>
+              <a href="#">Explore</a>
+            </div>
+          </div>
+          <div class="card" onclick="scaleCards(2)">
+            <figure>
+              <img
+                src="/assets/Forward, Peijin Yang.jpg"
+                alt=""
+                loading="lazy"
+              />
+            </figure>
+            <div>
+              <h3>Profile</h3>
+              <p>Lorem ipsum dolor sit amet consectetur.</p>
+              <a href="#">Explore</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="dots">
+          <input type="radio" value="0" onchange="scaleCards(0)" name="dot" />
+          <input
+            type="radio"
+            value="1"
+            onchange="scaleCards(1)"
+            name="dot"
+            checked
+          />
+          <input type="radio" value="2" onchange="scaleCards(2)" name="dot" />
+        </div>
+      </div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
+>>>>>>> d7bb9669d98f4815bdd2a4641f65596a5e1ae58a
