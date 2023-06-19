@@ -1,19 +1,34 @@
-let city;
+const navbar = document.querySelector(".navbar");
+const menu = document.querySelector(".menu");
+
+const cityInput = document.querySelector("#citySearch");
+const weatherReportContent = document.querySelector(
+	".weather__report .content"
+);
+
 // on search submit
-document.querySelector("form").addEventListener("submit", function (e) {
-	e.preventDefault();
-	city = this.elements[0].value;
-	fetchData(city);
+cityInput.addEventListener("change", (event) => {
+	clearTimeout(timer);
+	timer = setTimeout(() => {
+		fetchData(event.target.value);
+		event.target.value = "";
+	}, 100);
 });
 
 // on links click
 document.querySelector(".navLinks").addEventListener("click", function (e) {
-	city = e.target.innerText;
-	fetchData(city);
+	fetchData(e.target.innerText);
 });
 
-// function fetchData 
-const fetchData = async (city = "Agartala") => {
+let city = "Mumbai";
+let timer = 0;
+
+// function fetchData
+const fetchData = async (query) => {
+	if (!query) return;
+
+	let q = query.charAt(0).toUpperCase() + query.slice(1);
+
 	const baseUrl = "https://weather-by-api-ninjas.p.rapidapi.com/v1/weather?";
 
 	const options = {
@@ -23,39 +38,111 @@ const fetchData = async (city = "Agartala") => {
 			"X-RapidAPI-Host": "weather-by-api-ninjas.p.rapidapi.com",
 		},
 	};
-	// fetch the data
+
 	try {
-		const response = await fetch(`${baseUrl}city=${city}`, options);
+		showLoading(q);
+
+		const response = await fetch(`${baseUrl}city=${q}`, options);
 		const data = await response.json();
-		
-		weatherReport({ ...data, city });
+
+		showReport({ ...data, city: q });
 	} catch (error) {
 		console.error("oh no! error", error);
-		alert("something went wrong");
+		alert("Error fetching data: " + error.message);
 	}
 };
 
-function weatherReport(data) {
-	const { humidity, temp, feels_like, city } = data;
-	let weatherReport = document.querySelector(".weather-report");
+const titles = [
+	"Temperature",
+	"Humidity",
+	"Cloud %",
+	"Feels like",
+	"Minimum",
+	"Maximum",
+	"Wind Degrees",
+	// "Wind Speed",
+];
 
-	let output = `
-  <h2>City: <span class="fade" >${city}</span></h2>
-  <h2>Temperature: <span class="fade" >${temp}&deg;C</span></h2>
-  <h2>Feels Like: <span class="fade" >${feels_like}&deg;C</span></h2>
-  <h2>Humidity: <span class="fade" >${humidity}%</span></h2>
-  <figure class="fade">
-					<img src="./weather.png" alt="---" width="100" />
-	</figure>
-  `;
+function showLoading(city) {
+	weatherReportContent.innerHTML = `
+	<article>
+		<div>
+			<span>City</span>
+			<span>${city}</span>
+		</div>
 
-	weatherReport.innerHTML = output;
-	// remove the fade animation
-	weatherReport.classList.add("fade");
-	setTimeout(() => {
-		weatherReport.classList.remove("fade");
-	}, 500);
+		${titles
+			.map((t) => {
+				return `<div><span>${t}</span>
+				<p><span class="loader"></span></p></div>`;
+			})
+			.join("")}
+	</article>
+	`;
+}
+
+function showReport(data) {
+	const {
+		city,
+		temp,
+		min_temp,
+		max_temp,
+		feels_like,
+		wind_speed,
+		humidity,
+		cloud_pct,
+	} = data;
+
+	if (temp || humidity) {
+		weatherReportContent.innerHTML = `
+	<article>
+		 <div>
+			<span>City</span>
+			<span>${city}</span>
+		  </div>
+		 <div>
+			<span>${titles[0]}</span>
+			<span>${temp}&degC</span>
+		</div>
+		<div>
+			<span>${titles[1]}</span>
+			<span>${feels_like}&degC</span>
+		</div>
+		<div>
+			<span>${titles[2]}</span>
+			<span>${min_temp}&degC</span>
+		</div>
+		 <div>
+			<span>${titles[3]}</span>
+			<span>${max_temp}&degC</span>
+		</div>
+		 <div>
+			<span>${titles[4]}</span>
+			<span>${humidity}</span>
+		</div>
+		 <div>
+			<span>${titles[5]}</span>
+			<span>${cloud_pct}</span>
+		</div>
+		 <div>
+			<span>${titles[6]}</span>
+			<span>${wind_speed}</span>
+		</div>
+	</article>
+	`;
+	}
 }
 
 // default
-window.addEventListener("load", () => fetchData());
+window.addEventListener("load", () => fetchData(city));
+
+document.body.onclick = (e) => {
+	if (
+		(e.target === cityInput || menu.contains(e.target)) &&
+		!navbar.classList.contains("active")
+	) {
+		navbar.classList.add("active");
+	} else if (e.target !== cityInput) {
+		navbar.classList.remove("active");
+	}
+};
