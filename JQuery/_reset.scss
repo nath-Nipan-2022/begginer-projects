@@ -1,0 +1,24 @@
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+li {
+	list-style-type: none;
+}
+
+button {
+	border: none;
+	outline: none;
+	background: transparent;
+	font-size: inherit;
+	font-family: inherit;
+}

@@ -4,55 +4,67 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Random Color</title>
+		<title>Random BG Color</title>
 		<style>
+			body {
+				margin: 0;
+				padding: 0;
+				text-align: center;
+				background-color: hsl(199, 44%, 86%);
+			}
+			h2 {
+				background-color: #2624246f;
+				color: whitesmoke;
+				padding: 1em;
+				margin: 0;
+			}
 			button {
-				font-size: 2rem;
-				padding: 5px 20px;
-				border-radius: 5px;
-				color: #f4f4f4;
-				background: #8fbc8f;
+				font-size: 1.2rem;
+				padding: 6px 16px;
+				border: none;
+				border-radius: 6px;
+				background: #ffffff;
+				color: #111;
+				box-shadow: 0 3px 4px rgba(0, 0, 0, 0.2);
+
 				cursor: pointer;
-				transition: background 0.4s ease;
+				transition: 0.3s;
 			}
 			button:hover {
-				background: #7ca57c;
+				color: #ffffff;
+				background: #4d94ff;
 			}
-			h1 {
+			.color-name {
 				margin: 1rem auto;
 				width: fit-content;
-				border: 2px solid #272424;
 				background-color: #f4f4f4;
-				border-radius: 5px;
-				padding-inline: 1rem;
+				box-shadow: 0 2px 2px rgba(0, 0, 0, 0.15);
+				border-radius: 6px;
+				padding: 0.5rem 1rem;
 			}
 		</style>
 	</head>
-	<body style="text-align: center">
-		<h1>RANDOM COLOR GENERATOR</h1>
+	<body>
+		<h2>Random color generator</h2>
+		<div class="color-name">hsl(??,??,??)</div>
 		<button>Click Me</button>
 
 		<script>
 			const btn = document.querySelector("button");
-			const h1 = document.querySelector("h1");
-			const bdy = document.querySelector("body");
-			btn.addEventListener("click", function () {
-				const newColor = getRandom();
-				bdy.style.background = newColor;
-				h1.innerText = newColor;
-				h1.style.color = newColor;
-				// extra part.
-				// when text is not that readable,
-				if (Number(newColor.slice(4, 7)) > 200) {
-					h1.style.color = "#000000";
-				}
+			const colorName = document.querySelector(".color-name");
+
+			btn.addEventListener("click", () => {
+				const newColor = getRandomColor();
+				document.querySelector("body").style.background = newColor;
+				colorName.innerText = newColor;
 			});
 
-			const getRandom = () => {
-				const r = Math.floor(Math.random() * 255);
-				const g = Math.floor(Math.random() * 255);
-				const b = Math.floor(Math.random() * 255);
-				return `rgb(${r},${g},${b})`;
+			const getRandomColor = () => {
+				const hue = Math.floor(Math.random() * 360);
+				const g = Math.floor(Math.random() * 100);
+				const b = Math.floor(Math.random() * 100);
+
+				return `hsl(${hue},${g}%,${b}%)`;
 			};
 		</script>
 	</body>

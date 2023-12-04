@@ -1,148 +1,85 @@
-const navbar = document.querySelector(".navbar");
-const menu = document.querySelector(".menu");
-
-const cityInput = document.querySelector("#citySearch");
-const weatherReportContent = document.querySelector(
-	".weather__report .content"
-);
+const navbar = document.querySelector(".navbar"),
+  navLinks = document.querySelector(".navLinks"),
+  menu = document.querySelector(".menu"),
+  cityInputForm = document.querySelector("form"),
+  weatherReportContent = document.querySelector(".weather__report .content");
 
 // on search submit
-cityInput.addEventListener("change", (event) => {
-	clearTimeout(timer);
-	timer = setTimeout(() => {
-		fetchData(event.target.value);
-		event.target.value = "";
-	}, 100);
+cityInputForm.addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  fetchData(this.elements[0].value);
+  this.elements[0].value = "";
 });
 
 // on links click
-document.querySelector(".navLinks").addEventListener("click", function (e) {
-	fetchData(e.target.innerText);
+navLinks.addEventListener("click", function (e) {
+  fetchData(e.target.dataset.text);
 });
 
-let city = "Mumbai";
+let city = "Agartala";
 let timer = 0;
 
 // function fetchData
 const fetchData = async (query) => {
-	if (!query) return;
+  if (!query) return;
 
-	let q = query.charAt(0).toUpperCase() + query.slice(1);
+  let q = query.charAt(0).toUpperCase() + query.slice(1);
 
-	const baseUrl = "https://weather-by-api-ninjas.p.rapidapi.com/v1/weather?";
+  const baseUrl = "https://weather-by-api-ninjas.p.rapidapi.com/v1/weather?";
 
-	const options = {
-		method: "GET",
-		headers: {
-			"X-RapidAPI-Key": "6072f43cacmsh9137db65744c8afp1452a3jsn1d4b9e8dbefc",
-			"X-RapidAPI-Host": "weather-by-api-ninjas.p.rapidapi.com",
-		},
-	};
+  const options = {
+    method: "GET",
+    headers: {
+      "X-RapidAPI-Key": "6072f43cacmsh9137db65744c8afp1452a3jsn1d4b9e8dbefc",
+      "X-RapidAPI-Host": "weather-by-api-ninjas.p.rapidapi.com",
+    },
+  };
 
-	try {
-		showLoading(q);
+  try {
+    showLoading(q);
 
-		const response = await fetch(`${baseUrl}city=${q}`, options);
-		const data = await response.json();
+    const response = await fetch(`${baseUrl}city=${q}`, options);
+    const data = await response.json();
 
-		showReport({ ...data, city: q });
-	} catch (error) {
-		console.error("oh no! error", error);
-		alert("Error fetching data: " + error.message);
-	}
+    showReport({ ...data, city: q });
+  } catch (error) {
+    alert("Something went wrong!" + error.message);
+  }
 };
 
-const titles = [
-	"Temperature",
-	"Humidity",
-	"Cloud %",
-	"Feels like",
-	"Minimum",
-	"Maximum",
-	"Wind Degrees",
-	// "Wind Speed",
-];
+const titles = {
+  city: "City",
+  humidity: "Humidity",
+  min_temp: "Minimum",
+  max_temp: "Maximum",
+  feels_like: "Feels like",
+  wind_speed: "Wind Speed",
+  wind_degrees: "Wind Degrees",
+  cloud_pct: "Cloud %",
+};
 
 function showLoading(city) {
-	weatherReportContent.innerHTML = `
-	<article>
-		<div>
-			<span>City</span>
-			<span>${city}</span>
-		</div>
-
-		${titles
-			.map((t) => {
-				return `<div><span>${t}</span>
-				<p><span class="loader"></span></p></div>`;
-			})
-			.join("")}
-	</article>
-	`;
+  weatherReportContent.innerHTML = `<article><div><span class="loader"></span></div></article>`;
 }
 
 function showReport(data) {
-	const {
-		city,
-		temp,
-		min_temp,
-		max_temp,
-		feels_like,
-		wind_speed,
-		humidity,
-		cloud_pct,
-	} = data;
+  const cards = Object.keys(titles).map(
+    (item) =>
+      `<div><span>${titles[item]}</span><span>${data[item]}</span></div>`
+  );
 
-	if (temp || humidity) {
-		weatherReportContent.innerHTML = `
-	<article>
-		 <div>
-			<span>City</span>
-			<span>${city}</span>
-		  </div>
-		 <div>
-			<span>${titles[0]}</span>
-			<span>${temp}&degC</span>
-		</div>
-		<div>
-			<span>${titles[1]}</span>
-			<span>${feels_like}&degC</span>
-		</div>
-		<div>
-			<span>${titles[2]}</span>
-			<span>${min_temp}&degC</span>
-		</div>
-		 <div>
-			<span>${titles[3]}</span>
-			<span>${max_temp}&degC</span>
-		</div>
-		 <div>
-			<span>${titles[4]}</span>
-			<span>${humidity}</span>
-		</div>
-		 <div>
-			<span>${titles[5]}</span>
-			<span>${cloud_pct}</span>
-		</div>
-		 <div>
-			<span>${titles[6]}</span>
-			<span>${wind_speed}</span>
-		</div>
-	</article>
-	`;
-	}
+  weatherReportContent.innerHTML = `<article>${cards.join("")}</article>`;
 }
 
 // default
 window.addEventListener("load", () => fetchData(city));
 
 document.body.onclick = (e) => {
-	if (
-		(e.target === cityInput || menu.contains(e.target)) &&
-		!navbar.classList.contains("active")
-	) {
-		navbar.classList.add("active");
-	} else if (e.target !== cityInput) {
-		navbar.classList.remove("active");
-	}
+  if (!navbar.contains(e.target) && !menu.contains(e.target)) {
+    navbar.classList.remove("active");
+    return;
+  }
+
+  navbar.classList.toggle("active");
 };

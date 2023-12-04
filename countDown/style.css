@@ -17,7 +17,7 @@ body {
   background: url("./josh-hild-ejMaaCH6Igc-unsplash.jpg") 50% 30%/cover;
   background-color: var(--dark);
   color: var(--light);
-  background-blend-mode: hard-light;
+  background-blend-mode: color-dodge;
   display: grid;
   place-items: center;
   min-height: 100vh;
@@ -89,4 +89,5 @@ h2 span {
 
 .input-field input:hover {
   outline: 2px solid #e89d77;
+  cursor: pointer;
 }

@@ -1,0 +1,120 @@
+// styles.scss
+$primary-color: #007bff;
+$bg-color: #f3f9ff;
+
+@import "reset";
+
+@mixin align-center($direction) {
+	display: flex;
+	align-items: center;
+	flex-direction: $direction;
+}
+@mixin slideIn {
+	opacity: 0;
+	transform: translate3d(-4px, 0, 0);
+	transition: 0.3s;
+	animation: pop 0.3s forwards;
+}
+
+body {
+	font-family: Arial, sans-serif;
+	position: relative;
+	height: 100vh;
+	overflow: hidden;
+	background: $bg-color;
+}
+
+.container {
+	width: min(100%, 1080px);
+	margin: 0 auto;
+}
+
+header {
+	padding: 10px;
+	@include align-center(row);
+	justify-content: space-between;
+
+	.nav-links {
+		@include align-center(row);
+		gap: 1rem;
+
+		a {
+			display: block;
+			padding: 0.5rem 12px;
+			color: #5d5d5d;
+
+			&:hover {
+				color: inherit;
+			}
+		}
+	}
+}
+
+.button {
+	padding: 0.5rem 1rem;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+.buttons {
+	@include align-center(row);
+	gap: 10px;
+
+	.button {
+		border: 1px solid #5d5d5d;
+	}
+	.primary {
+		background: $primary-color;
+		color: #fff;
+	}
+}
+
+.blob {
+	position: absolute;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background: linear-gradient(62deg, $primary-color, #e9fb4c);
+	transition: 0.3s;
+}
+
+nav {
+	position: relative;
+}
+.submenu-wrapper {
+	position: absolute;
+	top: 100%;
+	@include slideIn;
+}
+
+.submenu-wrapper-inner {
+	display: flex;
+	gap: 4px;
+
+	padding: 4px;
+	background-color: #ffffff;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+	border-radius: 4px;
+	border: 1px solid rgba(0, 0, 0, 0.159);
+
+	ul {
+		@include slideIn;
+	}
+
+	a {
+		padding: 0.5rem 1rem;
+		display: block;
+		border-radius: 3px;
+
+		&:hover {
+			background-color: rgba(0, 0, 0, 0.08);
+		}
+	}
+}
+
+@keyframes pop {
+	to {
+		opacity: 1;
+		transform: translate3d(0, 0, 0);
+	}
+}

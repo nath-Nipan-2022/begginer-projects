@@ -1,100 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="style.css" />
-		<title>Weather Application</title>
-	</head>
-	<body>
-		<div class="container">
-			<main>
-				<header>
-					<div class="logo">
-						<a href="#">
-							<span>
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
-									width="16"
-									height="16"
-									fill="currentColor"
-									class="bi bi-cloud-drizzle-fill"
-									viewBox="0 0 16 16"
-								>
-									<path
-										d="M4.158 12.025a.5.5 0 0 1 .316.633l-.5 1.5a.5.5 0 0 1-.948-.316l.5-1.5a.5.5 0 0 1 .632-.317zm6 0a.5.5 0 0 1 .316.633l-.5 1.5a.5.5 0 0 1-.948-.316l.5-1.5a.5.5 0 0 1 .632-.317zm-3.5 1.5a.5.5 0 0 1 .316.633l-.5 1.5a.5.5 0 0 1-.948-.316l.5-1.5a.5.5 0 0 1 .632-.317zm6 0a.5.5 0 0 1 .316.633l-.5 1.5a.5.5 0 1 1-.948-.316l.5-1.5a.5.5 0 0 1 .632-.317zm.747-8.498a5.001 5.001 0 0 0-9.499-1.004A3.5 3.5 0 1 0 3.5 11H13a3 3 0 0 0 .405-5.973z"
-									/>
-								</svg>
-							</span>
-							<span>Weather App</span>
-						</a>
-					</div>
-					<div class="search__bar">
-						<input
-							type="search"
-							name="citySearch"
-							id="citySearch"
-							placeholder="Search Mumbai..."
-						/>
-						<span class="icon">
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								width="16"
-								height="16"
-								fill="currentColor"
-								class="bi bi-search"
-								viewBox="0 0 16 16"
-							>
-								<path
-									d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
-								/>
-							</svg>
-						</span>
-					</div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Weather Application</title>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="logo">
+          <a href="#">
+            <img src="logo.svg" alt="logo" />
+            <span>Weather App</span>
+          </a>
+        </div>
 
-					<nav class="navbar">
-						<ul class="navLinks">
-							<li><a href="#delhi">Delhi</a></li>
-							<li><a href="#mumbai">Mumbai</a></li>
-							<li><a href="#allahabad">Allahabad</a></li>
-							<li><a href="#bangalore">Bangalore</a></li>
-						</ul>
-					</nav>
-					<div class="overlay"></div>
-					<!-- menu icon -->
-					<div class="menu">
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							width="20"
-							height="20"
-							fill="currentColor"
-							class="bi bi-list"
-							viewBox="0 0 16 16"
-						>
-							<path
-								fill-rule="evenodd"
-								d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"
-							/>
-						</svg>
-					</div>
-				</header>
+        <form class="search__bar">
+          <input
+            type="search"
+            name="citySearch"
+            id="citySearch"
+            placeholder="Search any city..."
+          />
+          <img class="icon" src="search.svg" alt="search icon" />
+        </form>
 
-				<section class="weather__section">
-					<div class="weather__report">
-						<section class="content"></section>
-						<figure>
-							<img
-								src="https://plus.unsplash.com/premium_photo-1677593850639-9f1e14e4524b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1480&q=80"
-								alt="weather"
-							/>
-							<figcaption class="caption"></figcaption>
-						</figure>
-					</div>
-				</section>
-			</main>
-		</div>
-		<!-- app.js -->
-		<script src="app.js"></script>
-	</body>
+        <nav class="navbar">
+          <ul class="navLinks">
+            <li><a data-text="delhi" href="#delhi">Delhi</a></li>
+            <li><a data-text="mumbai" href="#mumbai">Mumbai</a></li>
+            <li><a data-text="allahabad" href="#allahabad">Allahabad</a></li>
+            <li><a data-text="bangalore" href="#bangalore">Bangalore</a></li>
+          </ul>
+        </nav>
+
+        <div class="overlay"></div>
+        <!-- menu icon -->
+        <div class="menu">
+          <img src="menu.svg" alt="menu icon" />
+        </div>
+      </header>
+
+      <main>
+        <section class="weather__section">
+          <div class="weather__report">
+            <article class="content"></article>
+          </div>
+        </section>
+      </main>
+    </div>
+    <!-- app.js -->
+    <script src="app.js"></script>
+  </body>
 </html>

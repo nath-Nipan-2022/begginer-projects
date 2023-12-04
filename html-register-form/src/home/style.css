@@ -1,0 +1,120 @@
+:root {
+  --primary: #8bc34a;
+  --primary-200: #d8e5cac9;
+  --primary-50: #d5eeb8;
+  --dark: rgb(17, 25, 31);
+}
+
+body {
+  background-color: var(--dark);
+  min-height: 100vh;
+}
+
+.container {
+  width: min(100%, 560px); /* mobile screen only */
+  margin: auto;
+}
+
+.container,
+h1 {
+  padding: 1rem;
+}
+
+h1,
+h2 {
+  color: var(--primary-50);
+}
+
+h1 {
+  /* font-size: 1.25rem; */
+  text-align: center;
+  margin-bottom: 1rem;
+  /* letter-spacing: 0.5px; */
+}
+
+.accordion-container {
+  display: grid;
+  justify-content: center;
+  align-items: start;
+  gap: 0.25em;
+
+  padding: 1rem;
+}
+
+.accordion {
+  --acc-height: 50px;
+  /* max-height: var(--acc-height); */
+  width: 380px;
+  /* margin-bottom: 0.5em; */
+  background-color: #ffffff20;
+}
+
+.accordion h2 {
+  font-size: 0.875rem;
+  font-weight: normal;
+  position: relative;
+  color: var(--primary-50);
+  height: var(--acc-height);
+}
+
+.accordion h2 .inner {
+  position: relative;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  background: radial-gradient(
+    50px circle at var(--x) var(--y),
+    #97ff7aa6,
+    transparent
+  );
+}
+
+.accordion h2.active .inner {
+  opacity: 1;
+}
+
+.accordion h2 .outer {
+  position: absolute;
+  z-index: 1;
+  inset: 2px;
+
+  padding: 1em;
+  background: var(--dark);
+}
+
+/* hidden css */
+.accordion .text {
+  color: var(--primary-200);
+  font-size: 0.75rem;
+  line-height: 1.5;
+  /* hidden */
+  opacity: 0;
+  transform: translateY(10px);
+
+  padding: 1em;
+
+  animation: popup 0.5s forwards;
+}
+
+/* chevron */
+.accordion h2::after {
+  content: ">";
+  position: absolute;
+  top: 50%;
+  right: 1.5rem;
+  z-index: 3;
+  transform: translateY(-50%) rotate(90deg);
+  transition: transform 300ms;
+}
+
+.accordion.active h2::after {
+  transform: translateY(-50%) rotate(-90deg);
+}
+
+@keyframes popup {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

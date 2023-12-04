@@ -1,29 +1,60 @@
-window.addEventListener("load", function () {
-	const filter = document.querySelector("#searchBox");
-	const items = document.querySelectorAll(".products li");
-	// to display no of items found
-	const heading = this.document.querySelector(".heading");
-	const foundITems = this.document.querySelector(".foundItems");
+const searchBox = document.getElementById("searchBox");
+const heading = document.querySelector(".heading");
+const itemsNum = document.querySelector(".items-no");
+const listContainer = document.querySelector("ul");
 
-	filter.addEventListener("input", function () {
-		let val = this.value.toLowerCase();
-		let count = 0;
-		// defaults
-		foundITems.innerText = "";
+const items = [
+	"Apple",
+	"Pineapple",
+	"Watermelon",
+	"Avocado",
+	"Guava",
+	"Pomegranates",
+	"Graphs",
+	"Almonds",
+	"Cashews",
+	"Orange",
+	"Banana",
+	"Kiwi",
+	"Papaya",
+	"Mango",
+	"Strawberries",
+	"Cucumber",
+	"Jackfruit",
+	"Walnuts",
+];
 
-		for (const item of items) {
-			let i = item.innerText.toLowerCase();
-			if (i.indexOf(val) === -1) {
-				item.classList.add("hide");
-				count++;
-			} else {
-				item.classList.remove("hide");
-			}
-			// if nothing is found;
-			if (count > 0) {
-				foundITems.innerText = `${items.length - count} items found`;
-				foundITems.style.color = "hsl(80, 50%, 27%)";
-			}
-		}
-	});
+window.addEventListener("load", () => {
+	showList(items);
+	searchBox.addEventListener("input", handleItemSearch);
 });
+
+function handleItemSearch(e) {
+	const value = e.target.value;
+	let count = 0;
+	listContainer.innerHTML = "";
+
+	const filteredItems = items.filter((item) =>
+		item.toLowerCase().includes(value.toLowerCase())
+	);
+
+	const length = filteredItems.length;
+
+	if (length === items.length) {
+		showList(filteredItems);
+		itemsNum.innerHTML = "";
+	} else {
+		showList(filteredItems, "bold");
+		itemsNum.innerHTML = `${length} item${length > 1 ? "s" : ""} found`;
+	}
+}
+
+function showList(lists, fontWeight = "") {
+	for (const item of lists) {
+		const listElem = document.createElement("li");
+		listElem.innerText = item;
+		listElem.className = fontWeight;
+
+		listContainer.append(listElem);
+	}
+}

@@ -2,16 +2,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-weight:300;
 }
-
-a {
-  text-decoration: none;
-  color: currentColor;
-}
-
-/* li {
-  list-style-type: none;
-} */
 
 button {
   border: none;
@@ -31,10 +23,6 @@ body {
   background-color: var(--bg-color);
   color: var(--base-color);
 
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-
-  /* for centering */
   display: grid;
   place-items: center;
   min-height: 100vh;
@@ -54,7 +42,6 @@ body {
 }
 
 h1 {
-  font-size: 2.5rem;
   padding-bottom: 1rem;
 }
 
@@ -112,13 +99,14 @@ button:focus {
 ol {
   padding-inline-start: 2.2rem;
 }
-
+ol li{
+  padding:10px;
+}
 .display-lap {
-  text-align: center;
-  width: fit-content;
-  padding: 0.1rem 0.45rem;
-
-  font-size: 1.2em;
-
-  border: 1px solid rgba(142, 128, 255, 0.486);
+      margin-top: 2rem;
+    text-align: center;
+    width: fit-content;
+    padding: 0.45rem;
+    font-size: 1.25rem;
+    border: 1px solid rgba(142, 128, 255, 0.486);
 }

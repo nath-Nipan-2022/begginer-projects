@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="form.css" />
+		<title>Form Validation</title>
+	</head>
+	<body>
+		<div class="container">
+			<header>
+				<div class="logo"><a href="#">Form</a></div>
+				<nav>
+					<ul class="nav-links">
+						<li><a href="#" class="active">Home</a></li>
+						<li><a href="#">Services</a></li>
+						<li><a href="#">About</a></li>
+						<li><a href="#">Contact</a></li>
+					</ul>
+				</nav>
+
+				<div class="buttons">
+					<a href="#" data-account_type="login" class="button button__login">
+						Login
+					</a>
+					<a
+						href="#"
+						data-account_type="register"
+						class="button button__register"
+					>
+						Register
+					</a>
+				</div>
+
+				<div class="menu">
+					<img src="./menu-hamburger.svg" alt="menuIcon" width="22px" />
+				</div>
+			</header>
+
+			<main>
+				<article
+					id="registerFormContainer"
+					class="active form-container register-form"
+				>
+					<h3>Register with us</h3>
+					<form id="registerForm">
+						<div class="form-field">
+							<label for="registerName">Username</label>
+							<input id="registerName" type="text" required />
+						</div>
+						<div class="form-field">
+							<label for="registerEmail">Email</label>
+							<input id="registerEmail" type="email" required />
+						</div>
+						<div class="form-field">
+							<label for="regPw">Password</label>
+							<input id="regPw" type="password" required />
+						</div>
+						<button id="submitRegister" type="submit">Submit</button>
+					</form>
+					<hr />
+					<div class="divider">
+						<a href="#" data-account_type="login">Already have an account?</a>
+					</div>
+				</article>
+				<article id="loginFormContainer" class="form-container login-form">
+					<h3>Welcome back</h3>
+					<form id="loginForm">
+						<div class="form-field">
+							<label for="uname">Username</label>
+							<input id="uname" type="text" required />
+						</div>
+						<div class="form-field">
+							<label for="password">Password</label>
+							<input id="password" type="password" required />
+							<a href="#" class="forget-pw">Forget password ?</a>
+						</div>
+						<button id="loginSubmit" type="submit">Submit</button>
+					</form>
+					<div class="divider">
+						<a href="#" data-account_type="register">Opening a new account?</a>
+					</div>
+				</article>
+			</main>
+		</div>
+		<script src="form.js"></script>
+	</body>
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="../global.css" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Form Fill Up</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <header>
+        <div class="logo">Reg Form Demo</div>
+        <div class="theme-toggler">
+          <input type="checkbox" name="theme-toggler" />
+          <img
+            src="../assets/theme.svg"
+            alt="theme icon"
+            width="32"
+            height="32"
+          />
+          <div class="theme">
+            <div class="radio-pill_shaped">
+              <input type="radio" id="dark" name="theme" />
+              <label for="dark"> Dark</label>
+            </div>
+            <div class="radio-pill_shaped">
+              <input type="radio" id="light" name="theme" />
+              <label for="light"> Light</label>
+            </div>
+            <div class="radio-pill_shaped">
+              <input type="radio" checked id="auto" name="theme" />
+              <label for="light">Auto</label>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <form class="form">
+        <article class="input-field">
+          <label for="username">Username</label>
+          <input
+            type="text"
+            minlength="4"
+            name="username"
+            id="username"
+            autocomplete="name"
+            required
+          />
+          <div class="input-error"></div>
+        </article>
+
+        <div class="gender-field">
+          <fieldset>
+            <legend>Gender</legend>
+            <div class="radio-pill_shaped">
+              <input
+                class="radio"
+                type="radio"
+                checked
+                name="gender"
+                id="male"
+                value="male"
+              />
+              <label for="male">Male</label>
+            </div>
+            <div class="radio-pill_shaped">
+              <input
+                class="radio"
+                type="radio"
+                name="gender"
+                id="female"
+                value="female"
+              />
+              <label for="female">Female</label>
+            </div>
+          </fieldset>
+        </div>
+
+        <article class="input-field">
+          <label for="fatherName">Father's Name</label>
+          <input type="text" name="fatherName" id="fatherName" required />
+        </article>
+
+        <article class="input-field">
+          <label for="pw">Password</label>
+          <div class="input-field_inner">
+            <img
+              src="../assets/check-lg.svg"
+              alt="..."
+              width="20"
+              height="20"
+              class="check-icon"
+            />
+            <img
+              src="../assets/eye-slash.svg"
+              alt="..."
+              width="20"
+              height="20"
+              class="eye-icon"
+            />
+            <input type="password" minlength="6" name="pw" id="pw" required />
+          </div>
+          <div class="input-error" id="pw-error"></div>
+        </article>
+
+        <article class="input-field">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Example@gmail.com"
+            autocomplete="email"
+            required
+          />
+        </article>
+
+        <div class="fieldsetArea">
+          <fieldset>
+            <legend>Address</legend>
+            <div class="select-area">
+              <div class="label">Country</div>
+              <select
+                class="countries-name"
+                name="countries-name"
+                autocomplete="country-name"
+              >
+                <option>--select--</option>
+                <option value="india">India</option>
+                <option value="norway">Norway</option>
+                <option value="uganda">Uganda</option>
+                <option value="madagascar">Madagascar</option>
+              </select>
+            </div>
+            <div class="select-area">
+              <div class="label">State</div>
+              <select class="states-name" name="states-name">
+                <option>--select--</option>
+              </select>
+            </div>
+          </fieldset>
+        </div>
+
+        <article class="input-field">
+          <div class="label">Phone Number</div>
+          <div class="input-box">
+            <select class="first-child" name="ph-num-code">
+              <option value="ind" selected>+91</option>
+              <option value="pak">+0089</option>
+              <option value="ban">+0088</option>
+            </select>
+            <input
+              type="number"
+              name="ph-no"
+              id="ph-no"
+              minlength="10"
+              pattern="[0-9]{5} [0-9]{5}"
+              required
+            />
+          </div>
+          <div class="input-error" id="ph-no-error"></div>
+        </article>
+
+        <article class="input-field">
+          <div class="label">Select Amount</div>
+
+          <div class="input-box">
+            <select class="first-child currency-code" name="currency-code">
+              <option value="IND" selected>IND</option>
+              <option value="USD">USD</option>
+              <option value="JPY">JPY</option>
+            </select>
+            <div class="last-child">
+              <input type="number" name="amount" id="amount" required />
+              <span class="currency-symbol">₹</span>
+            </div>
+          </div>
+        </article>
+        <div class="btns">
+          <button class="reset" type="reset">Reset</button>
+          <button class="submit" type="submit">
+            <span class="loader"></span>
+            <span>Submit</span>
+          </button>
+        </div>
+      </form>
+
+      <footer>
+        <ul>
+          <li><a href="#">Register</a></li>
+          <li><a href="../home/home.html">Home</a></li>
+          <li><a href="#">Services</a></li>
+        </ul>
+      </footer>
+    </div>
+    <script src="./index.js"></script>
+  </body>
+</html>

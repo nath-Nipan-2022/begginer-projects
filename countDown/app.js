@@ -1,80 +1,85 @@
-// declear the variables
-let birthday = 0;
-let timer = 0;
+// declare the variables
+let birthday = new Date(),
+  timer = 0,
+  wishMsg = 'H,A,P,P,Y,B,I,R,T,H,D,A,Y';
 
-// get date of birth
-function getDOB() {
-  const box = document.createElement("div");
-  box.className = "input-field";
+const remaining = {
+  days: '',
+  hours: '',
+  minutes: '',
+  seconds: '',
+};
 
-  box.innerHTML =
-    "<label for='date'>Pick Your Birtday Date</label><input type = 'date' name = 'date' /> ";
-
-  document.querySelector("main").appendChild(box);
-}
-getDOB();
+// select elements
+const dateInput = document.querySelector('.input-field input'),
+  timerArea = document.querySelector('.timer-area');
 
 // take input
-document.querySelector(".input-field input").onchange = handleDateInput;
-
+dateInput.onblur = handleDateInput;
 function handleDateInput(e) {
-  const dob = e.target.value;
-  console.log(dob);
-  birthday = new Date(`${dob} `);
-  //note: this little space `${dob} `<- here is needed for exact start of the day
+  birthday = new Date(`${e.target.value} `);
+  console.log(e.target.value);
+  // NOTE: `${e.target.value} *` <- here Space is needed for exact start of the day.
+
   startTimer();
 }
 
-// render the timer elements
-const desc = document.querySelector("#desc");
+//* Render the timer elements
 
-desc.innerHTML = `<div class="timer-area">
-  <h2><span id="d">00</span>days</h2>
-  <h2><span id="h">00</span>hours</h2>
-  <h2><span id="m">00</span>minutes</h2>
-  <h2><span id="s">00</span>seconds</h2>
-  <div>`;
+let elemIds = ['days', 'hours', 'minutes', 'seconds'];
 
-const days = desc.querySelector("#d");
-const hrs = desc.querySelector("#h");
-const mins = desc.querySelector("#m");
-const secs = desc.querySelector("#s");
+timerArea.innerHTML = elemIds
+  .map((id) => `<h2><span id='${id}'>00</span>${id}</h2>`)
+  .join('');
 
-function countDown() {
-  // on each iteration new time is needed
-  const td = new Date();
+// select time elements
+const hourEl = document.getElementById('hours'),
+  daysEl = document.getElementById('days'),
+  minutesEl = document.getElementById('minutes'),
+  secsEl = document.getElementById('seconds');
 
-  const seconds = (birthday - td) / 1000;
-
-  const day = Math.floor(seconds / 3600 / 24);
-  const hours = Math.floor(seconds / 3600) % 24;
-  const minutes = Math.floor((seconds / 60) % 60);
-
-  days.innerText = day;
-  hrs.innerText = hours;
-  mins.innerText = minutes;
-  secs.innerText = Math.floor(seconds % 60);
-
-  if (diff === 0) {
-    desc.innerHTML = `<div class="timer-area">
-        <h2><span>H</span></h2>
-        <h2><span>A</span></h2>
-        <h2><span>P</span></h2>
-        <h2><span>P</span></h2>
-        <h2><span>Y</span></h2>
-        <h2><span>B</span></h2>
-        <h2><span>I</span></h2>
-        <h2><span>R</span></h2>
-        <h2><span>T</span></h2>
-        <h2><span>H</span></h2>
-        <h2><span>D</span></h2>
-        <h2><span>A</span></h2>
-        <h2><span>Y</span></h2>
-     <div>`;
-    clearInterval(timer);
-  }
-}
-
+// start the timer
 function startTimer() {
   timer = setInterval(countDown, 1000);
+}
+
+// on each iteration new time is needed
+function countDown() {
+  const now = new Date();
+  birthday.setFullYear(
+    birthday.getMonth() - now.getMonth() > 0
+      ? now.getFullYear()
+      : now.getFullYear() + 1
+  );
+
+  const diffInSec = (birthday.getTime() - now.getTime()) / 1000;
+
+  const daysLeft = Math.floor(diffInSec / 60 / 60 / 24),
+    hoursLeft = Math.floor((diffInSec / 60 / 60) % 24),
+    minutesLeft = Math.floor((diffInSec / 60) % 60),
+    secondsLeft = Math.floor(diffInSec % 60);
+
+  if (daysLeft > remaining.days) {
+    remaining.days = daysLeft;
+    days.innerHTML = remaining.days;
+  }
+  if (hoursLeft > remaining.hours) {
+    remaining.hours = hoursLeft;
+    hourEl.innerHTML = remaining.hours;
+  }
+  if (minutesLeft > remaining.minutes) {
+    remaining.minutes = minutesLeft;
+    minutesEl.innerHTML = remaining.minutes;
+  }
+
+  remaining.seconds = secondsLeft;
+  secsEl.innerHTML = remaining.seconds;
+
+  if (!diffInSec) {
+    desc.innerHTML = wishMsg
+      .split(',')
+      .map((el) => `<h2><span>${el}</span></h2>`)
+      .join('');
+    clearInterval(timer);
+  }
 }

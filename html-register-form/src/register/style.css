@@ -1,0 +1,376 @@
+input,
+select,
+button {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  border: 0;
+}
+
+.input-field input,
+select,
+button,
+.radio-pill_shaped {
+  box-shadow: 0 0 0 1px #00000020;
+}
+
+h5 {
+  color: var(--muted-color);
+}
+
+.theme-toggler {
+  position: relative;
+  width: 40px;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+}
+
+.theme-toggler input {
+  opacity: 0;
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.theme-toggler > input:checked ~ .theme {
+  transform: translate3d(0, 0, 0);
+  visibility: visible;
+  opacity: 1;
+}
+
+.theme {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 1rem);
+
+  transform: translate(0, -10px);
+  visibility: hidden;
+  transition: transform 0.3s, opacity 0.3s;
+  opacity: 0;
+
+  padding: 0.5rem;
+  border-radius: 10px;
+  background-color: var(--bg-color);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 10px #22222220;
+}
+.theme div {
+  white-space: nowrap;
+}
+.theme div:not(:last-child) {
+  margin-bottom: 8px;
+}
+
+html[data-theme="dark"] .theme-toggler img,
+html[data-theme="dark"] .eye-icon {
+  filter: invert(1);
+}
+html[data-theme="light"] .theme-toggler img,
+html[data-theme="light"] .eye-icon {
+  filter: invert(0);
+}
+
+input[type="radio"] {
+  width: 100%;
+  height: 100%;
+  box-shadow: none;
+  opacity: 0;
+}
+
+.radio-pill_shaped {
+  width: 100px;
+  height: 44px;
+  position: relative;
+  border-radius: 8px;
+}
+
+.radio-pill_shaped label {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+
+  pointer-events: none;
+  user-select: none;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: var(--bg-color-2);
+  color: var(--muted-color);
+  border-radius: inherit;
+}
+
+/* highlight border */
+.theme input[type="radio"]:checked ~ label {
+  background-color: var(--accent-color);
+  color: #fff;
+}
+
+.gender-field input[type="radio"]:checked ~ label {
+  color: var(--accent-color);
+  font-weight: bolder;
+  box-shadow: 0 0 10px rgb(0 0 0 / 5%);
+}
+
+fieldset {
+  border: 0;
+  padding: 10px 0;
+}
+
+.gender-field fieldset {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.gender-field .radio-pill_shaped {
+  border-radius: 8px;
+  flex: 1 0;
+  height: 54px;
+}
+
+div.checked {
+  border: 2px solid var(--accent-color);
+}
+
+/*legend section*/
+legend {
+  padding: 6px 12px;
+  margin-bottom: 0.5rem;
+  border-radius: 6px;
+  background-color: rgb(0 0 0 / 10%);
+  border: 1px solid var(--border-color);
+  font-weight: 600;
+}
+
+/*Input Area Design*/
+.input-field {
+  margin-block: 1rem 2rem;
+}
+.label,
+label {
+  font-weight: 600;
+  color: var(--text-color);
+  display: block;
+}
+
+input:not(input[type="radio"]) {
+  width: 100%;
+  height: 50px;
+  padding: 0.75rem 1rem;
+}
+.input-field_inner {
+  position: relative;
+}
+.input-field_inner img {
+  position: absolute;
+  right: 0.75rem;
+  top: calc(50% + 0.35rem);
+  transform: translate(0, -50%);
+  transition: 0.3s;
+}
+
+.input-field_inner .check-icon {
+  opacity: 0;
+  right: calc(0.75rem + 2rem);
+}
+.check-icon.active {
+  opacity: 1;
+}
+
+.input-field_inner .eye-icon {
+  filter: invert(1);
+  cursor: pointer;
+}
+
+/* bg & outline */
+.input-box,
+.input-field > input,
+.input-field_inner > input {
+  outline: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  background-color: var(--bg-color-2);
+  margin-top: 0.75rem;
+}
+
+/* hover & focus */
+select:is(:hover, :focus),
+.input-field input:is(:hover, :focus) {
+  outline: 2px solid var(--accent-color);
+}
+
+.input-box {
+  display: flex;
+  align-items: center;
+  height: 58px;
+}
+
+.input-box .first-child {
+  margin-inline: 12px;
+
+  padding: 6px 12px;
+  width: fit-content;
+  box-shadow: 0 0 4px #11111131;
+  font-weight: 600;
+  border-radius: 0.5rem;
+}
+
+.input-box .last-child,
+.input-box > input {
+  flex: 1 0;
+
+  border-left: 1px solid var(--border-color);
+
+  font-size: 1.125rem;
+  font-weight: 600;
+  position: relative;
+  box-shadow: 0 0 0 0;
+}
+.input-box input#amount {
+  padding-left: 2rem;
+}
+.input-box .currency-symbol {
+  width: 2rem;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  display: grid;
+  place-items: center;
+}
+
+.input-box input:is(:hover, :focus) {
+  outline: 0;
+}
+.input-box input[type="number"] {
+  letter-spacing: 3px;
+  height: 58px;
+}
+
+/* displaying Errors */
+
+.alert-warning {
+  color: tomato;
+  font-size: 0.85rem;
+  margin-block: 1rem;
+}
+input.invalid {
+  border: 2px solid tomato;
+}
+input.invalid:is(:hover, :focus) {
+  outline: 0;
+  border-color: var(--accent-color);
+}
+
+::placeholder {
+  color: var(--text-color);
+  opacity: 0.7;
+}
+
+/*buttons Design*/
+.btns {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2.5rem;
+  padding-bottom: 2rem;
+}
+
+.submit,
+.reset {
+  padding: 14px 1.5rem;
+  border-radius: 6px;
+
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.15s;
+}
+
+.reset {
+  background: var(--bg-color-2);
+  width: 120px;
+  color: var(--muted-color);
+}
+
+.submit {
+  background-color: var(--accent-color);
+  flex: 1;
+  color: #fff;
+  opacity: 0.8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.submit:hover {
+  opacity: 1;
+}
+
+.reset:hover {
+  background-color: #d6d6d6;
+  color: #333;
+}
+
+/*Select Options*/
+.select-area {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0.5rem;
+  padding-left: 1rem;
+  margin-bottom: 0.75rem;
+  background-color: var(--bg-color-2);
+  border-radius: 8px;
+  color: var(--text-color);
+}
+
+select {
+  color: var(--text-color);
+  background-color: var(--bg-color-2);
+  outline: 2px solid var(--border-color);
+
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  width: 180px;
+  text-transform: capitalize;
+}
+
+option {
+  background-color: var(--bg-color);
+}
+
+@media (min-width: 450px) {
+  input[type="radio"],
+  button {
+    cursor: pointer;
+  }
+}
+
+/* loader */
+.loader {
+  display: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #fff;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  animation: rotation 1s linear infinite;
+}
+.loader.loading {
+  display: inline-block;
+}
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
