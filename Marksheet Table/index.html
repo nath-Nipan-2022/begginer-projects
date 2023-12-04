@@ -1,113 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="style.css" />
-		<title>Document</title>
-	</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
 
-	<body>
-		<div class="container">
-			<h6 class="front-text">
-				Mark Sheet Screen
-				<span id="toggleTheme" onclick="changeTheme()">
-					<img
-						src="https://cdn-icons-png.flaticon.com/512/10020/10020914.png"
-					/>
-				</span>
-			</h6>
-			<main>
-				<section class="hero-section">
-					<h1>All Mark Sheets at one place.</h1>
-					<p>
-						Why to search different places?
-						<br />
-						Have our website and find every mark sheet at one place!
-					</p>
-					<h2>Student's Details</h2>
-					<section class="details">
-						<article class="details__content">
-							<h2 class="student__name">Ramchandra Saha</h2>
-							<h4>Madhyamik Result</h4>
-							<h4>Public School</h4>
-						</article>
-						<div class="banner">
-							<img
-								src="https://images.unsplash.com/photo-1677831888787-83247940f343?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw4fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=1000&q=60"
-								alt="user"
-								width="100"
-								height="100"
-							/>
-						</div>
-						<div class="banner__overlay"></div>
-					</section>
-				</section>
+  <body>
+    <div class="container">
+      <h6 class="front-text">
+        Mark Sheet Screen
+        <span id="toggleTheme" onclick="changeTheme()">
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/10020/10020914.png"
+            alt="toggle theme"
+          />
+        </span>
+      </h6>
+      <main>
+        <section class="hero-section">
+          <h1>All Mark Sheets at one place.</h1>
+          <p>
+            Why to search different places?
+            <br />
+            Have our website and find every mark sheet at one place!
+          </p>
+          <h2>Student's Details</h2>
+          <section class="details">
+            <article class="details__content">
+              <h2 class="student__name">Ramchandra Saha</h2>
+              <h4>Madhyamik Result</h4>
+              <h4>Public School</h4>
+            </article>
+            <div class="banner">
+              <img
+                src="https://images.unsplash.com/photo-1677831888787-83247940f343?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw4fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=1000&q=60"
+                alt="user"
+                width="100"
+                height="100"
+              />
+            </div>
+            <div class="banner__overlay"></div>
+          </section>
+        </section>
 
-				<section class="contents-section">
-					<section class="selection">
-						<label for="select"> Select Mark sheet </label>
-						<div class="select-group">
-							<select class="select" id="select">
-								<option value="0">10th</option>
-								<option value="1">12th</option>
-								<option value="2">B.Sc</option>
-								<option value="3">M.Sc</option>
-							</select>
-							<button id="cta">Check</button>
-						</div>
-					</section>
+        <section class="contents-section">
+          <section class="selection">
+            <label for="select"> Select Mark sheet </label>
+            <div class="select-group">
+              <select class="select" id="select">
+                <option value="0">10th</option>
+                <option value="1">12th</option>
+                <option value="2">B.Sc</option>
+                <option value="3">M.Sc</option>
+              </select>
+              <button id="cta">Check</button>
+            </div>
+          </section>
 
-					<table id="table">
-						<thead>
-							<tr>
-								<th>Subjects</th>
-								<th onclick="sortMarks()">
-									Marks
-									<span class="icon" data-order="">
-										<svg
-											xmlns="http://www.w3.org/2000/svg"
-											width="16"
-											height="16"
-											fill="currentColor"
-											class="bi bi-chevron-up"
-											viewBox="0 0 16 16"
-										>
-											<path
-												fill-rule="evenodd"
-												d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"
-											/>
-										</svg>
-										<svg
-											xmlns="http://www.w3.org/2000/svg"
-											width="16"
-											height="16"
-											fill="currentColor"
-											class="bi bi-chevron-down"
-											viewBox="0 0 16 16"
-										>
-											<path
-												fill-rule="evenodd"
-												d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"
-											/>
-										</svg>
-									</span>
-								</th>
-							</tr>
-						</thead>
+          <table id="table">
+            <thead>
+              <tr>
+                <th>Subjects</th>
+                <th onclick="sortMarks()">
+                  Marks
+                  <span class="icon" data-order="">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      class="bi bi-chevron-up"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"
+                      />
+                    </svg>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      class="bi bi-chevron-down"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"
+                      />
+                    </svg>
+                  </span>
+                </th>
+              </tr>
+            </thead>
 
-						<tbody></tbody>
+            <tbody></tbody>
 
-						<tfoot>
-							<tr class="percentage">
-								<th>Percentage</th>
-								<th id="percent"></th>
-							</tr>
-						</tfoot>
-					</table>
-				</section>
-			</main>
-		</div>
-		<script src="app.js"></script>
-	</body>
+            <tfoot>
+              <tr class="percentage">
+                <th>Percentage</th>
+                <th id="percent">0%</th>
+              </tr>
+            </tfoot>
+          </table>
+        </section>
+      </main>
+    </div>
+    <script src="app.js"></script>
+  </body>
 </html>

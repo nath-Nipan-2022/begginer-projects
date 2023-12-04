@@ -1,71 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Random BG Color</title>
-		<style>
-			body {
-				margin: 0;
-				padding: 0;
-				text-align: center;
-				background-color: hsl(199, 44%, 86%);
-			}
-			h2 {
-				background-color: #2624246f;
-				color: whitesmoke;
-				padding: 1em;
-				margin: 0;
-			}
-			button {
-				font-size: 1.2rem;
-				padding: 6px 16px;
-				border: none;
-				border-radius: 6px;
-				background: #ffffff;
-				color: #111;
-				box-shadow: 0 3px 4px rgba(0, 0, 0, 0.2);
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random BG Color</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        background-color: hsl(199, 44%, 86%);
+      }
+      h2 {
+        background-color: #2624246f;
+        color: whitesmoke;
+        padding: 1em;
+        margin: 0;
+      }
+      button {
+        font-size: 1.2rem;
+        padding: 6px 16px;
+        border: none;
+        border-radius: 6px;
+        background: #ffffff;
+        color: #111;
+        box-shadow: 0 3px 4px rgba(0, 0, 0, 0.2);
 
-				cursor: pointer;
-				transition: 0.3s;
-			}
-			button:hover {
-				color: #ffffff;
-				background: #4d94ff;
-			}
-			.color-name {
-				margin: 1rem auto;
-				width: fit-content;
-				background-color: #f4f4f4;
-				box-shadow: 0 2px 2px rgba(0, 0, 0, 0.15);
-				border-radius: 6px;
-				padding: 0.5rem 1rem;
-			}
-		</style>
-	</head>
-	<body>
-		<h2>Random color generator</h2>
-		<div class="color-name">hsl(??,??,??)</div>
-		<button>Click Me</button>
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      button:hover {
+        color: #ffffff;
+        background: #4d94ff;
+      }
+      .color-name {
+        margin: 1rem auto;
+        width: fit-content;
+        background-color: #f4f4f4;
+        box-shadow: 0 2px 2px rgba(0, 0, 0, 0.15);
+        border-radius: 6px;
+        padding: 0.5rem 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Random color generator</h2>
+    <div class="color-name">hsl(??,??,??)</div>
+    <button>Click Me</button>
 
-		<script>
-			const btn = document.querySelector("button");
-			const colorName = document.querySelector(".color-name");
+    <script>
+      const btn = document.querySelector("button");
+      const colorName = document.querySelector(".color-name");
 
-			btn.addEventListener("click", () => {
-				const newColor = getRandomColor();
-				document.querySelector("body").style.background = newColor;
-				colorName.innerText = newColor;
-			});
+      btn.addEventListener("click", () => {
+        const newColor = getRandomColor();
+        document.querySelector("body").style.background = newColor;
+        colorName.innerText = newColor;
+      });
 
-			const getRandomColor = () => {
-				const hue = Math.floor(Math.random() * 360);
-				const g = Math.floor(Math.random() * 100);
-				const b = Math.floor(Math.random() * 100);
+      const getRandomColor = () => {
+        const hue = Math.floor(Math.random() * 360);
+        const g = Math.floor(Math.random() * 100);
+        const b = Math.floor(Math.random() * 100);
 
-				return `hsl(${hue},${g}%,${b}%)`;
-			};
-		</script>
-	</body>
+        return `hsl(${hue},${g}%,${b}%)`;
+      };
+    </script>
+  </body>
 </html>

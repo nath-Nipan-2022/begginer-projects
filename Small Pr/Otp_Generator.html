@@ -1,73 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>OTP GENERATE</title>
-	</head>
-	<style>
-		body {
-			color: #f3f3f3;
-			background-color: #1a1717;
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OTP GENERATE</title>
+  </head>
+  <style>
+    body {
+      color: #f3f3f3;
+      background-color: #1a1717;
 
-			display: grid;
-			place-items: center;
-		}
-		h4 {
-			margin: 0;
-		}
-		article {
-			margin-top: 4rem;
-			max-width: 80%;
+      display: grid;
+      place-items: center;
+    }
+    h4 {
+      margin: 0;
+    }
+    article {
+      margin-top: 4rem;
+      max-width: 80%;
 
-			display: flex;
-			flex-direction: column;
-			flex-wrap: wrap;
-			gap: 1rem;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      gap: 1rem;
 
-			padding: 1.5rem;
-			border-radius: 4px;
-			background-color: #413f3f;
-		}
-		#otpBox.active {
-			padding: 6px 10px;
-			background-color: #b6852cc0;
-			border: 1px solid #ffe390;
-			border-radius: inherit;
-		}
-		.btn {
-			padding: 0.5rem 1rem;
-			border: none;
-			border-radius: inherit;
-			position: relative;
-			cursor: pointer;
-			transition: 0.2s;
-		}
-		.btn:hover {
-			background-color: #2196f3;
-			color: #f3f3f3;
-		}
-	</style>
-	<body>
-		<article>
-			<h4>Otp Generator</h4>
-			<button class="btn" onclick="generateOtp()">Generate OTP</button>
-			<div id="otpBox"></div>
-		</article>
-		<script>
-			function generateOtp() {
-				const optBox = document.getElementById("otpBox");
-				let otp = "";
+      padding: 1.5rem;
+      border-radius: 4px;
+      background-color: #413f3f;
+    }
+    #otpBox.active {
+      padding: 6px 10px;
+      background-color: #b6852cc0;
+      border: 1px solid #ffe390;
+      border-radius: inherit;
+    }
+    .btn {
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: inherit;
+      position: relative;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .btn:hover {
+      background-color: #2196f3;
+      color: #f3f3f3;
+    }
+  </style>
+  <body>
+    <article>
+      <h4>Otp Generator</h4>
+      <button class="btn" onclick="generateOtp()">Generate OTP</button>
+      <div id="otpBox"></div>
+    </article>
+    <script>
+      function generateOtp() {
+        const optBox = document.getElementById("otpBox");
+        let otp = "";
 
-				for (let i = 0; i < 6; i++) {
-					let random = Math.floor(Math.random() * 9);
-					otp += random;
-				}
+        for (let i = 0; i < 6; i++) {
+          let random = Math.floor(Math.random() * 9);
+          otp += random;
+        }
 
-				optBox.innerText = otp;
-				optBox.className = "active";
-			}
-		</script>
-	</body>
+        optBox.innerText = otp;
+        optBox.className = "active";
+      }
+    </script>
+  </body>
 </html>

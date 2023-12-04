@@ -1,8 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
 
 
-html[data-theme='light'],
-:root {
+html[data-theme='light'] {
   --bg-color: #f5fff5;
   --text-color: #2d2d32;
   --muted-text-color: #2a2c29;
@@ -38,6 +37,8 @@ body {
 }
 
 html[data-theme='dark'] {
+  --bg-color: #161512;
+  --text-color: #bbfff8;
   --base: hsl(56, 29%, 38%);
   --base-2: hsl(56, 36%, 30%);
   --muted-text-color: #c2c2c2;
@@ -66,7 +67,7 @@ h4 {
 h1 {
   position: relative;
   line-height: 1.1;
-  color: rgb(19 150 136);
+  color: rgb(72, 186, 174);
   font-size: 2rem;
 }
 
@@ -82,11 +83,11 @@ h2 {
 }
 
 h3 {
-  font-size: 1.125rem;
+  font-size: 1rem;
 }
 
 h4 {
-  font-size: 1.125rem;
+  font-size: .875rem;
 }
 
 
@@ -270,7 +271,7 @@ button {
 }
 
 button:hover {
-  background: var(--accent);
+  background: var(--base-2);
   color: #222;
 }
 

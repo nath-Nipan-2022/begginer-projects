@@ -3,7 +3,7 @@ const possibleFeedbacks = [
   "Quit Good 😁",
   "Lovely 😂",
   "Awesome 🤣",
-  "Excelent 😆",
+  "Excellent 😆",
 ];
 
 const ratingBtns = document.querySelectorAll(".rating-area button");

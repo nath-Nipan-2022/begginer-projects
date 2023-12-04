@@ -1,69 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Todo List</title>
-	</head>
-	<body style="padding: 4rem">
-		<h3>Dynamic Todo List Making</h3>
-		<ol id="todo-list"></ol>
-		<!-- js -->
-		<script>
-			const todoList = document.getElementById("todo-list");
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo List</title>
+  </head>
+  <body style="padding: 4rem">
+    <h3>Dynamic Todo List Making</h3>
+    <ol id="todo-list"></ol>
+    <!-- js -->
+    <script>
+      const todoList = document.getElementById("todo-list");
 
-			const options = {
-				New: "n",
-				view: "v",
-				Delete: "d",
-				Quit: "q",
-			};
+      const options = {
+        New: "n",
+        view: "v",
+        Delete: "d",
+        Quit: "q",
+      };
 
-			function createTodo() {
-				const todos = ["Wake up", "Workout", "Take bath"];
-				let userInput = prompt(
-					`Enter: ${Object.keys(options)}: ${Object.values(options)}`
-				);
+      function createTodo() {
+        const todos = ["Wake up", "Workout", "Take bath"];
+        let userInput = prompt(
+          `Enter: ${Object.keys(options)}: ${Object.values(options)}`
+        );
 
-				while (userInput) {
-					if (userInput === "n") {
-						let newTodo = prompt("Type in this field");
-						while (newTodo) {
-							alert(` '${newTodo}' added to the list!`);
-							todos.push(newTodo);
-							newTodo = prompt("Add another?");
-						}
-					} else if (userInput === "d") {
-						let j = parseInt(prompt("Type the index of list to delete"));
-						if (!Number.isNaN(j)) {
-							h1.innerText = `'${todos[j]}' has been Removed!`;
+        while (userInput) {
+          if (userInput === "n") {
+            let newTodo = prompt("Type in this field");
+            while (newTodo) {
+              alert(` '${newTodo}' added to the list!`);
+              todos.push(newTodo);
+              newTodo = prompt("Add another?");
+            }
+          } else if (userInput === "d") {
+            let j = parseInt(prompt("Type the index of list to delete"));
+            if (!Number.isNaN(j)) {
+              h1.innerText = `'${todos[j]}' has been Removed!`;
 
-							todos.splice(j, 1);
-							showTodos(todos);
-						}
-					} else if (userInput === "v") {
-						showTodos(todos);
-						break;
-					} else {
-						alert(" You Quit!");
-						break;
-					}
-					userInput = prompt("Enter 'n' or 'v' or 'd' or 'q' ");
-				}
+              todos.splice(j, 1);
+              showTodos(todos);
+            }
+          } else if (userInput === "v") {
+            showTodos(todos);
+            break;
+          } else {
+            alert(" You Quit!");
+            break;
+          }
+          userInput = prompt("Enter 'n' or 'v' or 'd' or 'q' ");
+        }
 
-				!userInput && showTodos(todos);
-			}
+        !userInput && showTodos(todos);
+      }
 
-			function showTodos(todos) {
-				const items = [...todos];
-				todoList.innerHTML = `
-							Showing todo list <br> *******
-							<li>${items.join("</li><li>")}</li>
-							*******`;
-			}
+      function showTodos(todos) {
+        const items = [...todos];
+        todoList.innerHTML = `
+              Showing todo list <br> *******
+              <li>${items.join("</li><li>")}</li>
+              *******`;
+      }
 
-			createTodo();
-		</script>
-	</body>
+      createTodo();
+    </script>
+  </body>
 </html>
