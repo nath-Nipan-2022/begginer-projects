@@ -1,102 +1,121 @@
-const display = document.querySelector(".display");
-const digits = document.querySelectorAll("[data-number]");
-const operators = document.querySelectorAll("[data-operation]");
-const deleteBtn = document.querySelector("[data-delete]");
-const clearBtn = document.querySelector("[data-clear]");
-const equalBtn = document.querySelector("[data-equals]");
+const d = document;
+const calculator = {
+	display: d.querySelector(".display"),
+	digits: d.querySelectorAll("[data-number]"),
+	operators: d.querySelectorAll("[data-operator]"),
+	deleteBtn: d.querySelector("[data-delete]"),
+	clearBtn: d.querySelector("[data-clear]"),
+	equalBtn: d.querySelector("[data-equals]"),
+};
 
-// lets define the needed variables
 let num1 = 0;
 let num2 = 0;
-let display2 = '';
-let whatOperation = "";
+let hasOperation = "";
+let timesOfOperation = 0;
 let operator = "";
-let isOperationStart = false;
+// operation started or not
+let isStarted = false;
 
-// outputting the digits..
-digits.forEach((btn) => {
-	btn.addEventListener("click", function () {
-		//Firstly every digits will be displayed
-		display.innerText += this.innerText;
+function updateDisplay() {
+	calculator.display.innerText = num1 + operator + (num2 || "");
+}
 
-		if (!isOperationStart) {
-			num1 = parseFloat(display.innerText);
-		} else if (isOperationStart) {
-			display2 += this.innerText;
-			num2 = parseFloat(display2);
+calculator.digits.forEach((digit) => {
+	digit.onclick = (e) => {
+		const numValue = e.target.dataset.number;
+
+		if (!isStarted) {
+			num1 = parseFloat(num1 + numValue);
+		} else {
+			num2 = parseFloat(num2 + numValue);
 		}
-	});
+		updateDisplay();
+	};
 });
-// operators..
-operators.forEach((operation) => {
-	operation.addEventListener("click", () => {
-		isOperationStart = true;
-		whatOperation = operation;
-		operator = operation.innerText;
-		display.innerText = num1 + operator;
-	});
+
+calculator.operators.forEach((opr) => {
+	opr.onclick = () => {
+		// timesOfOperation++;
+		operator = opr.dataset.operator;
+
+		// const output = calculate();
+		// if (timesOfOperation > 1) {
+		// num1 = output;
+		// calculator.display.innerText = output + operator;
+		// num2 = 0;
+		// } else {
+		isStarted = true;
+		hasOperation = opr;
+		updateDisplay();
+		// }
+	};
 });
-// Equals to?
-equalBtn.addEventListener("click", () => {
-	let output = calculate();
-	display.innerText = output;
+
+// calculate result
+calculator.equalBtn.addEventListener("click", displayResults);
+
+function displayResults() {
+	const result = calculate();
+	reset();
 	// if first value isn't inputted
-	num1 = output;
-	num2 = 0;
-	display2 = '';
-	isOperationStart = false;
-});
-// calculate function..
-let calculate = () => {
-	if (!isOperationStart) {
+	num1 = result;
+	updateDisplay();
+}
+
+function calculate() {
+	const { operators } = calculator;
+	if (!isStarted) {
 		return num1;
 	}
-	switch (whatOperation) {
-		case operators[3]:
-			return num1 + num2;
-		case operators[2]:
-			return num1 - num2;
+	switch (hasOperation) {
+		case operators[0]:
+			return num1 / num2;
 		case operators[1]:
 			return num1 * num2;
+		case operators[2]:
+			return num1 - num2;
 		default:
-			return num1 / num2;
+			return num1 + num2;
 	}
-};
-// clear..
-clearBtn.addEventListener("click", () => {
-	reset();
-});
-// reset function..
-function reset() {
-	display.innerText = "";
-	num1 = 0;
-	num2 = 0;
-	display2 = '';
-	isOperationStart = false;
-	whatOperation = "";
 }
 
-// delete..
-deleteBtn.addEventListener("click", () => {
-	correct();
-});
-// correct function..
-function correct() {
-	if (!isOperationStart) {
-		let output = sliceNums(num1);
-		num1 = parseFloat(output) || "";
-		// 0 is incase num1 = 'NaN';
-		display.innerText = num1;
-	} else if (isOperationStart) {
-		let output = sliceNums(num2);
-		num2 = parseFloat(output) || "";
-		display.innerText = num1 + operator + num2;
+const reset = () => {
+	num1 = 0;
+	num2 = 0;
+	hasOperation = "";
+	timesOfOperation = 0;
+	operator = "";
+	isStarted = false;
+	calculator.display.innerHTML = "";
+};
+calculator.clearBtn.onclick = reset;
+
+calculator.deleteBtn.onclick = () => {
+	if (!isStarted) {
+		num1 = sliceIt(num1);
+	} else if (num2 === 0) {
+		operator = sliceIt(operator);
+		isStarted = false;
+	} else {
+		num2 = sliceIt(num2);
 	}
+	updateDisplay();
+	console.log({ num1: num1, num2: num2 });
+};
+
+function sliceIt(num) {
+	const numArr = [...num.toString()];
+	numArr.splice(numArr.length - 1, 1); // this will remove last digit
+
+	let output = parseFloat(numArr.join(""));
+	if (isNaN(output)) {
+		output = 0;
+	}
+	return output;
 }
-// sliceNums function..
-function sliceNums(num) {
-	let remains = num.toString();
-	let slicedNum = remains.slice(0, remains.length - 1);
-	// It will delete the last digit 👆
-	return slicedNum;
-}
+
+window.addEventListener("keydown", (e) => {
+	if (e.key === "Enter") {
+		displayResults();
+	}
+});

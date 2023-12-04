@@ -5,53 +5,38 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Web Calculator</title>
-		<!-- online Animation -->
-		<link
-			rel="stylesheet"
-			href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-		/>
-		<!-- custom css -->
-		<link
-			href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@1,500&display=swap"
-			rel="stylesheet"
-		/>
 		<style>
-			* {
-				font-family: "Lora", serif;
-				--gradient: linear-gradient(135deg, #b42525, #245eb5);
-			}
 			body {
 				display: grid;
 				place-items: center;
-				height: 100vh;
-				background: var(--gradient);
+				background-color: #8b9cf3;
 			}
-			.heading{
+			.heading {
 				margin: 0;
-				color: #ddd;
-				letter-spacing: 1px;
+				font-size: 1.75rem;
+				color: #fff5f5;
+				text-shadow: 1px 2px 2px rgb(0 0 0 / 41%);
 			}
 			.calculator {
-				min-width: 220px;
-				padding: 1.5rem 1rem;
-				user-select: none;
-				transition: .4s;
+				width: 220px;
+				margin-top: 2rem;
+				padding: 10px;
+				background: antiquewhite;
+				color: #f2f3f4;
+				transition: 0.3s;
 			}
 			.display {
-				font-size: 1.3rem;
-				height: 2rem;
-				padding: 10px;
+				font-size: 1.25rem;
+				height: 24px;
+				padding: 16px 12px;
 				text-align: right;
-				/* vertical-align: middle; */
-				color: #f2f3f4;
-				background-color: rgba(0, 0, 0, 0.6);
+				background-color: #5e35b1;
 				box-shadow: inset 0 -1px 1px #faf8f8;
-				margin-bottom: 0.45rem;
-				transition: 0.4s ease-out;
+				margin-bottom: 0.5rem;
+				transition: border 0.2s;
 			}
 			.display:hover {
 				border-radius: 4px;
-				box-shadow: inset 0 -1px 1px #faf8f8, 0 2px 1rem 0 #000000a6;
 			}
 			.actions {
 				display: grid;
@@ -67,45 +52,45 @@
 				font-size: 1rem;
 				border: none;
 				border-radius: 2px;
-				background: rgba(0, 0, 0, 0.5);
-				color: #faf8f8;
-				transition: 0.3s;
+				background: rgb(0 0 0 / 68%);
+				color: inherit;
+				cursor: pointer;
+				transition: 0.2s;
 			}
 			button:hover {
-				box-shadow: inset 0 -1px 0px #faf8f8;
-				background: #4e4e4e;
+				background: rgb(0 0 0 / 78%);
 			}
 			.colspan-2 {
 				grid-column-end: span 2;
 			}
 			.colspan-2:hover {
-				background: hsl(20, 42%, 41%);
+				background: #d45f3a;
 			}
 		</style>
 	</head>
 	<body>
 		<h1 class="heading">Web Calculator</h1>
-		<div class="calculator animate__animated animate__zoomInUp">
+		<div class="calculator">
 			<div class="display"></div>
 
 			<div class="actions">
 				<button data-clear class="colspan-2">AC</button>
 				<button data-delete>&DoubleLongLeftArrow;</button>
-				<button data-operation>&divide;</button>
-				<button data-number>7</button>
-				<button data-number>8</button>
-				<button data-number>9</button>
-				<button data-operation>&times;</button>
-				<button data-number>4</button>
-				<button data-number>5</button>
-				<button data-number>6</button>
-				<button data-operation>&minus;</button>
-				<button data-number>1</button>
-				<button data-number>2</button>
-				<button data-number>3</button>
-				<button data-operation>+</button>
-				<button data-number>0</button>
-				<button data-number>.</button>
+				<button data-operator="/">&divide;</button>
+				<button data-number="7">7</button>
+				<button data-number="8">8</button>
+				<button data-number="9">9</button>
+				<button data-operator="x">&times;</button>
+				<button data-number="4">4</button>
+				<button data-number="5">5</button>
+				<button data-number="6">6</button>
+				<button data-operator="-">&minus;</button>
+				<button data-number="1">1</button>
+				<button data-number="2">2</button>
+				<button data-number="3">3</button>
+				<button data-operator="+">+</button>
+				<button data-number="0">0</button>
+				<button data-number=".">.</button>
 				<button data-equals class="colspan-2">=</button>
 			</div>
 		</div>
